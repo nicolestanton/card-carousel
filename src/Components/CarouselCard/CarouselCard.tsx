@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./CarouselCard.module.scss";
-import { FaRegHeart, FaStar } from "react-icons/fa";
+import { FaHeart, FaRegHeart, FaStar } from "react-icons/fa";
 import { FaPepperHot } from "react-icons/fa";
 import { LuAlarmClock } from "react-icons/lu";
 import { PlaceholderImage } from "../PlaceholderImage/PlaceholderImage";
@@ -24,10 +24,17 @@ export const CarouselCard = ({
   placeholderImage: string;
 }) => {
   const [cardClicked, setCardClicked] = useState(false);
+  const [favouriteRecipe, setFavouriteRecipe] = useState(false);
+
 
   const toggleClasses = () => {
     setCardClicked(!cardClicked);
   };
+
+  const handleToggleFavourite = () => {
+    setFavouriteRecipe(!favouriteRecipe);
+  };
+
 
   return (
     <div className={styles.carouselCard}>
@@ -48,16 +55,16 @@ export const CarouselCard = ({
             </span>
             <span className={styles.carouselCardDetail}> "{reviewText}"</span>
           </div>
-          <div>
+          <button className={styles.favourites} onClick={handleToggleFavourite}>
             <div className={styles.favouriteContainer}>
-              <FaRegHeart className={styles.heartIcon} />
+              {favouriteRecipe ? <FaHeart className={styles.heartIcon}/> : <FaRegHeart className={styles.heartIcon} /> }
             </div>
             <PlaceholderImage
               src={image}
               alt=""
               placeholderSrc={placeholderImage}
             />
-          </div>
+          </button>
         </div>
       </button>
       <div className={styles.carouselCardFooter}>
