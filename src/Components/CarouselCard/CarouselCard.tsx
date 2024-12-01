@@ -26,7 +26,6 @@ export const CarouselCard = ({
   const [cardClicked, setCardClicked] = useState(false);
   const [favouriteRecipe, setFavouriteRecipe] = useState(false);
 
-
   const toggleClasses = () => {
     setCardClicked(!cardClicked);
   };
@@ -35,10 +34,11 @@ export const CarouselCard = ({
     setFavouriteRecipe(!favouriteRecipe);
   };
 
-
   return (
     <div className={styles.carouselCard}>
       <button
+              data-testid="carouselCard"
+
         onClick={toggleClasses}
         className={cardClicked ? styles.flipContainer : styles.ImageContainer}
       >
@@ -55,16 +55,25 @@ export const CarouselCard = ({
             </span>
             <span className={styles.carouselCardDetail}> "{reviewText}"</span>
           </div>
-          <button className={styles.favourites} onClick={handleToggleFavourite}>
+          <div>
             <div className={styles.favouriteContainer}>
-              {favouriteRecipe ? <FaHeart className={styles.heartIcon}/> : <FaRegHeart className={styles.heartIcon} /> }
+              <button
+                className={styles.favourites}
+                onClick={handleToggleFavourite}
+              >
+                {favouriteRecipe ? (
+                  <FaHeart className={styles.heartIcon} />
+                ) : (
+                  <FaRegHeart className={styles.heartIcon} />
+                )}
+              </button>
             </div>
             <PlaceholderImage
               src={image}
               alt=""
               placeholderSrc={placeholderImage}
             />
-          </button>
+          </div>
         </div>
       </button>
       <div className={styles.carouselCardFooter}>

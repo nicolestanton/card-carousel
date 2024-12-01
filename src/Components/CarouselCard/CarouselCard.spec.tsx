@@ -71,7 +71,7 @@ describe("CarouselCard Component", () => {
 
   it("toggles card class on button click", () => {
     render(<CarouselCard {...mockCarouselCardProps} />);
-    const button = screen.getByRole("button");
+    const button = screen.getByTestId("carouselCard");
     expect(button).toHaveClass("ImageContainer");
 
     fireEvent.click(button!);
