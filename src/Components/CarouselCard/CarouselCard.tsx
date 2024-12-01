@@ -37,8 +37,7 @@ export const CarouselCard = ({
   return (
     <div className={styles.carouselCard}>
       <button
-              data-testid="carouselCard"
-
+        data-testid="carouselCard"
         onClick={toggleClasses}
         className={cardClicked ? styles.flipContainer : styles.ImageContainer}
       >
