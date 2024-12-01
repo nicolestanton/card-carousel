@@ -9,16 +9,6 @@ again it should return to normal
 
 The designs for this project can be found [here](https://www.figma.com/design/daCUNPZzpf17U64KsF5lSa/Recipe-carousel?node-id=7-757&node-type=frame&t=DVerhpPgmmpnM4Kl-0)
 
-
-Considerations whilst developing this carousel:
-- accessibility (tabbing)
-- test
-- code splitting and reusability
-- defining correct types for props and API data
-- error handling
-- fallback images
-- responsiveness
-
 ## Available Scripts
 
 In the project directory, you can run:
@@ -44,8 +34,18 @@ Will run the server and the client together.\
 - I have created a backend for this project using express and node. The reason for this was on initial set up of the project I was running into cors issues when retrieving the data from the API and adding headers to the request wasnt fixing the issue. Therefore after some troubleshooting I found this solution worked for me. 
 - I used javascript fetch method instead of the usual axios fetch due to the simplicity of the project and for this speicific use case I didnt need detailed error responses.
 
-## More about this repo
+## More about this repo & considerations
+
+- accessibility (tabbing)
+- test
+- code splitting and reusability
+- defining correct types for props and API data
+- error handling
+- fallback images
+- responsiveness
+
 
 - I have used [react-icons](https://react-icons.github.io/react-icons/) library for any icons on the design
 - Tests are using react testing library
 - I have used Sass modules to keep styling scope manageable and easy to read
+
