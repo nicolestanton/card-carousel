@@ -1,0 +1,13 @@
+.carouselContainer {
+  padding: 24px;
+  background-color: #f2f2f2;
+  max-width: 930px;
+}
+
+.carouselOverflow {
+  overflow: scroll;
+}
+
+.carouselCardContainer {
+  display: flex;
+}

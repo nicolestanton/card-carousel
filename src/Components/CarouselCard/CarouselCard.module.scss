@@ -1,0 +1,103 @@
+.carouselCard {
+  width: 275px;
+  padding: 12px;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.ImageContainer{
+  background: white;
+  border: none;
+  padding: 0px;
+}
+
+.flipContainer{
+  border: none;
+  padding: 0px;
+
+}
+
+.flipContainer .flipContainerInner {
+  transform: rotateY(180deg);
+}
+
+.flipContainerInner {
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.carouselCardFlipDetails{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.carouselCardFlipDetails {
+  background-color: white;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transform: rotateY(180deg);
+  gap: 6px;
+  border-radius: 5px;
+  z-index: 999;
+}
+
+.carouselCardDetail {
+  display: flex;
+  gap: 8px;
+}
+
+.iconClock {
+  color: grey;
+}
+.iconChilli {
+  color: red;
+}
+.iconStar {
+  color: yellow;
+}
+
+.favouriteContainer{
+  height: 36px;
+  width: 36px;
+  background-color: white;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  justify-content: center;
+  z-index: 1;
+  right: 12px;
+  bottom: 12px;
+}
+
+.heartIcon{
+  font-size: 24px;
+  color: red;
+}
+
+.carouselCardFooter {
+  padding-top: 12px;
+}
+
+.name {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.description {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 18px;
+}
+
+
+
