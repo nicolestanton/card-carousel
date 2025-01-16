@@ -3,25 +3,25 @@
   padding: 12px;
   cursor: pointer;
   background-color: #fff;
+  display: flex;
+  flex-direction: column;
 }
 
-.ImageContainer{
-  background: white;
+.ImageContainer {
   border: none;
   padding: 0px;
 }
 
-.flipContainer{
+.flipContainer {
   border: none;
   padding: 0px;
-
 }
 
-.flipContainer .flipContainerInner {
+.flipContainer .card {
   transform: rotateY(180deg);
 }
 
-.flipContainerInner {
+.card {
   transition: transform 0.8s;
   transform-style: preserve-3d;
 }
@@ -59,7 +59,7 @@
   color: yellow;
 }
 
-.favourites{
+.favourites {
   height: 36px;
   width: 36px;
   background-color: white;
@@ -71,19 +71,21 @@
   border: none;
 }
 
-.favouriteContainer{
-  position: absolute;
-  right: 12px;
-  bottom: 12px;
+.favouriteContainer {
+  right: -225px;
+  bottom: 50px;
+  position: relative;
 }
 
-.heartIcon{
+.heartIcon {
   font-size: 24px;
   color: red;
 }
 
 .carouselCardFooter {
-  padding-top: 12px;
+  margin-top: -24px;
+  padding-left: 12px;
+  padding-right: 12px;
 }
 
 .name {

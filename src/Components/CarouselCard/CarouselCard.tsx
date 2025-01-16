@@ -26,7 +26,10 @@ export const CarouselCard = ({
   const [cardClicked, setCardClicked] = useState(false);
   const [favouriteRecipe, setFavouriteRecipe] = useState(false);
 
-  const toggleClasses = () => {
+  const toggleClasses = (e: any) => {
+    if ((e.target as HTMLElement).closest(`.${styles.favouriteContainer}`)) {
+      return;
+    }
     setCardClicked(!cardClicked);
   };
 
@@ -35,50 +38,48 @@ export const CarouselCard = ({
   };
 
   return (
-    <div className={styles.carouselCard}>
-      <button
-        data-testid="carouselCard"
-        onClick={toggleClasses}
-        className={cardClicked ? styles.flipContainer : styles.ImageContainer}
-      >
-        <div className={styles.flipContainerInner}>
-          <div className={styles.carouselCardFlipDetails}>
-            <span className={styles.carouselCardDetail}>
-              <LuAlarmClock className={styles.iconClock} /> {cookingTime} (mins)
-            </span>
-            <span className={styles.carouselCardDetail}>
-              <FaPepperHot className={styles.iconChilli} /> {heatLevel}
-            </span>
-            <span className={styles.carouselCardDetail}>
-              <FaStar className={styles.iconStar} /> {rating}
-            </span>
-            <span className={styles.carouselCardDetail}> "{reviewText}"</span>
-          </div>
-          <div>
-            <div className={styles.favouriteContainer}>
-              <button
-                className={styles.favourites}
-                onClick={handleToggleFavourite}
-              >
-                {favouriteRecipe ? (
-                  <FaHeart className={styles.heartIcon} />
-                ) : (
-                  <FaRegHeart className={styles.heartIcon} />
-                )}
-              </button>
-            </div>
-            <PlaceholderImage
-              src={image}
-              alt=""
-              placeholderSrc={placeholderImage}
-            />
-          </div>
+    <article
+      role="button"
+      data-testid="carouselCard"
+      onClick={toggleClasses}
+      className={`${styles.carouselCard} ${
+        cardClicked ? styles.flipContainer : styles.ImageContainer
+      }`}
+    >
+      <div className={styles.card}>
+        <div className={styles.carouselCardFlipDetails}>
+          <span className={styles.carouselCardDetail}>
+            <LuAlarmClock className={styles.iconClock} /> {cookingTime} (mins)
+          </span>
+          <span className={styles.carouselCardDetail}>
+            <FaPepperHot className={styles.iconChilli} /> {heatLevel}
+          </span>
+          <span className={styles.carouselCardDetail}>
+            <FaStar className={styles.iconStar} /> {rating}
+          </span>
+          <span className={styles.carouselCardDetail}> "{reviewText}"</span>
         </div>
-      </button>
+        <div>
+          <PlaceholderImage
+            src={image}
+            alt=""
+            placeholderSrc={placeholderImage}
+          />
+        </div>
+      </div>
+      <div className={styles.favouriteContainer}>
+        <button className={styles.favourites} onClick={handleToggleFavourite}>
+          {favouriteRecipe ? (
+            <FaHeart className={styles.heartIcon} />
+          ) : (
+            <FaRegHeart className={styles.heartIcon} />
+          )}
+        </button>
+      </div>
       <div className={styles.carouselCardFooter}>
         <p className={styles.name}>{name}</p>
         <p className={styles.description}>{description}</p>
       </div>
-    </div>
+    </article>
   );
 };
