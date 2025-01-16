@@ -1,6 +1,6 @@
 # Card Carousel using Create React app
 
-This repo contains ann the project code for a crad carousel using data from Simply cook public API. The requirements for this project were as follows:
+This repo contains the project code for a card carousel using data from Simply cook public API. The requirements for this project were as follows:
 - Displays only recipes that contain the allergens Crustaceans , Fish or Eggs
 - Displays the recipe name, short description and image on the card
 - When each card is clicked it should ‘flip over’ to reveal Cooking time,
@@ -8,6 +8,8 @@ average rating, the top review text and a chilli heat level (0-3); when clicked
 again it should return to normal
 
 The designs for this project can be found [here](https://www.figma.com/design/daCUNPZzpf17U64KsF5lSa/Recipe-carousel?node-id=7-757&node-type=frame&t=DVerhpPgmmpnM4Kl-0)
+
+<img width="918" alt="Screenshot 2025-01-16 at 12 45 06" src="https://github.com/user-attachments/assets/00422d68-3dd6-4e44-bc8f-155e36a56f76" />
 
 ## Available Scripts
 
@@ -37,7 +39,7 @@ Will run the server and the client together.\
 ## More about this repo & considerations
 
 - accessibility (tabbing)
-- test
+- tests
 - code splitting and reusability
 - defining correct types for props and API data
 - error handling
