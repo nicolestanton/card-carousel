@@ -1,10 +1,23 @@
 .carouselCard {
-  width: 275px;
-  padding: 12px;
+  width: 17.1875rem;
+  padding: 0.75rem;
   cursor: pointer;
   background-color: #fff;
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+
+.carouselCard article {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  outline: none;
+}
+
+.carouselCard article:focus {
+  box-shadow: 0 0 0 2px #4d90fe;
+  border-radius: 6px;
 }
 
 .ImageContainer,
@@ -35,13 +48,16 @@
   text-align: center;
   transform: rotateY(180deg);
   gap: 6px;
-  border-radius: 5px;
+  border-radius: 6px;
   z-index: 999;
 }
 
 .carouselCardDetail {
   display: flex;
-  gap: 8px;
+  gap: 0.5rem;
+  align-items: center;
+  max-width: 80%;
+  font-size: 0.75rem;
 }
 
 .iconClock {
@@ -55,44 +71,49 @@
 }
 
 .favourites {
-  height: 36px;
-  width: 36px;
+  height: 2.25rem;
+  width: 2.25rem;
   background-color: white;
-  border-radius: 24px;
+  border-radius: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1;
   border: none;
+  cursor: pointer;
+}
+
+.favourites:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #4d90fe;
 }
 
 .favouriteContainer {
-  right: -225px;
-  bottom: 50px;
-  position: relative;
+  right: 24px;
+  top: 150px;
+  position: absolute;
 }
 
 .heartIcon {
-  font-size: 24px;
+  font-size: 1.5rem;
   color: red;
 }
 
 .carouselCardFooter {
-  margin-top: -24px;
-  padding-left: 12px;
-  padding-right: 12px;
+  margin-top: 0.5rem;
+  padding-right: 0.75rem;
 }
 
 .name {
   margin: 0;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 700;
-  line-height: 24px;
+  line-height: 1.5rem;
 }
 
 .description {
   margin: 0;
-  font-size: 13px;
+  font-size: 0.8125rem;
   font-weight: 500;
-  line-height: 18px;
+  line-height: 1.125rem;
 }

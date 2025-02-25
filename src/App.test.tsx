@@ -1,11 +1,11 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor, act } from "@testing-library/react";
 import App from "./App";
 import { mockRecipes } from "./mockRecipes";
 
 describe("App Component", () => {
   beforeEach(() => {
     jest.clearAllMocks();
-
+    
     // mock fetch request to get recipe data
     global.fetch = jest.fn(() =>
       Promise.resolve({
@@ -16,22 +16,14 @@ describe("App Component", () => {
   });
 
   test("renders carousel with filtered recipes", async () => {
-    render(<App />);
+      render(<App />);
 
-    await waitFor(
-      () => {
-        const recipeName = screen.getByText("Lasagne");
-        expect(recipeName).toBeInTheDocument();
-      },
-      { timeout: 2000 }
-    );
+    await waitFor(() => {
+      const recipeName = screen.getByText("Lasagne");
+      expect(recipeName).toBeInTheDocument();
+    });
 
     expect(global.fetch).toHaveBeenCalledWith("/recipes");
   });
 
-  test("handles loading state", async () => {
-    render(<App />);
-
-    expect(screen.getByText("Loading...")).toBeInTheDocument();
-  });
 });

@@ -1,4 +1,3 @@
-import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { CarouselCard } from "./CarouselCard";
 
@@ -6,6 +5,7 @@ jest.mock("react-icons/fa", () => ({
   FaRegHeart: () => <div data-testid="heart-icon" />,
   FaStar: () => <div data-testid="star-icon" />,
   FaPepperHot: () => <div data-testid="pepper-icon" />,
+  FaHeart: () => <div data-testid="filled-heart-icon" />,
 }));
 
 jest.mock("react-icons/lu", () => ({
@@ -13,7 +13,7 @@ jest.mock("react-icons/lu", () => ({
 }));
 
 jest.mock("../PlaceholderImage/PlaceholderImage", () => ({
-  PlaceholderImage: ({ src, alt, placeholderSrc }: any) => (
+  PlaceholderImage: ({ src, alt, placeholderSrc }: { src: string; alt: string; placeholderSrc: string }) => (
     <img
       data-testid="placeholder-image"
       src={src}
@@ -39,14 +39,21 @@ describe("CarouselCard Component", () => {
     render(<CarouselCard {...mockCarouselCardProps} />);
 
     expect(screen.getByText("Spicy Chicken Tacos")).toBeInTheDocument();
-    expect(
-      screen.getByText("Delicious spicy chicken tacos")
-    ).toBeInTheDocument();
+    expect(screen.getByText("Delicious spicy chicken tacos")).toBeInTheDocument();
+  });
 
-    expect(screen.getByText("30 (mins)")).toBeInTheDocument();
-    expect(screen.getByText("3")).toBeInTheDocument();
-    expect(screen.getByText("4.5")).toBeInTheDocument();
-    expect(screen.getByText('"Amazing flavor!"')).toBeInTheDocument();
+  it("shows details when flipped", () => {
+    render(<CarouselCard {...mockCarouselCardProps} />);
+    
+    const cardButton = screen.getByRole("button", { 
+      name: /recipe for spicy chicken tacos/i 
+    });
+    fireEvent.click(cardButton);
+
+    expect(screen.getByText("Cooking Time: 30 minutes")).toBeInTheDocument();
+    expect(screen.getByText("Heat Level: 3")).toBeInTheDocument();
+    expect(screen.getByText("Rating: 4.5")).toBeInTheDocument();
+    expect(screen.getByText('Review: "Amazing flavor!"')).toBeInTheDocument();
   });
 
   it("renders card icons correctly", () => {
@@ -69,16 +76,14 @@ describe("CarouselCard Component", () => {
     );
   });
 
-  it("toggles card class on button click", () => {
+  it("toggles favorite state when clicking favorite button", () => {
     render(<CarouselCard {...mockCarouselCardProps} />);
-    const button = screen.getByTestId("carouselCard");
-    expect(button).toHaveClass("ImageContainer");
-
-    fireEvent.click(button!);
-
-    expect(button).toHaveClass("flipContainer");
-
-    fireEvent.click(button!);
-    expect(button).toHaveClass("ImageContainer");
+    
+    const favoriteButton = screen.getByRole("button", { 
+      name: /add .* to favorites/i 
+    });
+    fireEvent.click(favoriteButton);
+    
+    expect(screen.getByTestId("filled-heart-icon")).toBeInTheDocument();
   });
 });
